@@ -4,20 +4,31 @@
     <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'>
     <style>
         body {
-            font-family: 'Fredericka the Great';
-            font-size: 22px;
+            font-family: Montserrat, sans-serif;
+            font-size: 20px;
         }
     </style>
     <title>Week 1</title>
     <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
 </head>
 <body>
-    <div>
-        <h1>Week 1 - Final Project Idea</h1>
-        <hr width="150px;" 
+    <div style="width:100%;"> 
+        <div style="float:left; width:80%;">
+            <h1>Week 1 - Final Project Idea</h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../about/index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">About</a></h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">Home</a></h1>
+            <br />
+        </div>
+        <hr width="100%;" 
         color="black" 
         size="2" 
-        align="left">
+        align="middle">    
     </div>
 
     <div>
@@ -42,7 +53,25 @@
         <p>In Figure 1, I constructed the input device in blue. While I do not have a specific design for it yet, I believe that it will provide angular data (similar to an arm rotating). From this device, I have constructed dotted lines representing how certain angles will correspond to certain points on the blackboard (red).</p>
         <p>In Figure 2, I drew my working design for the drawing apparatus. While I considered mechanisms that use vertical and horizontal movement, I eventually settled on a design that uses suspension. I chose this design with the hopes that it will more easily navigate curves as opposed to straight lines.</p>
         <h2>Roadmap</h2>
-        <p>In order to finish my project on time, I have split it up into different parts to be completed separately.</p>
+        <p>In order to finish my project on time, I have split it up into different parts to be completed separately. Each component and one major challenge that I anticipate with it are listed below:</p>
+        <ol>
+            <li>Develop the container for the chalk. It must be able to exert enough pressure on the board to make marks.</li>
+            <li>Construct the apparatus to move the container made in (1). It must be able to cover the entire board.</li>
+            <li>Design an input device to lay on the user's arm or wrist. It will need to be able to convert angles (spherical) to coordinates (planar).</li>
+            <li>Create a program to communicate between the input device and the drawing mechanism. This will need to be the last step which puts a time constraint on the project.</li>
+        </ol>
+        <div style="width:100%; padding-bottom: 250px;"> 
+            <div style="float:right; width:350px;">
+                <img src="diagram2.png" alt="Chalk Container Design V1" style="width:300px;height:300px;">
+                <br />
+                Fig 3. Chalk Container Design V1
+                <br/>
+            </div>
+            <div style="float:left; width:70%">
+                <p>Figure 3 demonstrates how a weight at the "back" of the chalk container could exert a limited amount of force on the board in front of it. The amount of force will be determined by how far back the center of gravity of the container is and how much weight is added. I will attempt to test this on Day 5, once we begin using the 3D printers.</p>
+                <br />
+            </div>
+        </div>
     </div>
 </body>
 </html>
