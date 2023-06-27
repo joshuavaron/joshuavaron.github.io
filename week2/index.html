@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+    <title>Week 1</title>
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
+</head>
+<body>
+    <div style="width:100%;"> 
+        <div style="float:left; width:80%;">
+            <h1>Week 2 - 2D Design and Cutting</h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../about/index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">About</a></h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">Home</a></h1>
+            <br />
+        </div>
+        <hr width="100%;" 
+        color="black" 
+        size="2" 
+        align="middle">    
+    </div>
+
+    <div>
+        <h2>Introduction</h2>
+        <p>Today we were challenged two do 2 things: create a press-fit construction kit that can be assembled multiple ways and measure and model two household objects in CAD. By the end of this lesson we were supposed to know how to use calipers to measure objects, how to operate the laser cutting machine, and how to proficiently use CAD (I chose Fusion360).</p>
+        <p>Growing up, I have always loved playing with LEGOs and decided to use them as inspiration for my project. Additionally, I decided to pick one simple object to model (to become comfortable with this type of digital modeling) and one difficult object to model (to challenge myself and develop skills in digital modeling).</p>
+        <h2>Components</h2>
+        <p>These projects required 3 components: the "LEGO" to be laser cut as well as the roll of tape and glue bottle to model.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="3D_render.png" alt="3D render of design" style="width:417px;height:269px;">
+                <br />
+                Fig 1. 3D Render of "LEGO" Design
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="3D_render_2.png" alt="Drawing Apparatus Design V1" style="width:341px;height:269px;">
+                <br />
+                Fig 3. 3D Render of Roll of Tape
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="3D_render_3.png" alt="Drawing Apparatus Design V1" style="width:203px;height:269px;">
+                <br />
+                Fig 2. 3D Render of Glue Bottle
+                <br />
+            </div>    
+        </div>
+        <p>In Figures 1, 2, and 3, I display the 3D models of the "LEGO", Roll of Tape, and Glue Bottle, respectively. It should be noted that these figures are all to scale (although the "LEGO is slightly distorted to account for kerf).</p>
+        <h2>Part 1 - "LEGO" press-fit construction kit</h2>
+        <p>In order to truly make a LEGO-style press-fit construction kit, I needed to capture the two axis with which one can connect LEGO pieces. This required that the pieces have indentations and extrusions exactly the width of the cardboard (or other material) used to fabricate them. I began by measuring the cardboard with calipers (Figure 4), and determined that this constant was 3.9mm.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="Calipers.png" alt="Calipers" style="width:300px;height:269px;">
+                <br />
+                <p>Fig 4. Calipers after measuring cardboard*</p>
+                <p>*This is a measurement of a separate piece of cardboard. The 3.9mm constant was determined a priori.</p>
+            </div>
+        </div>
+        <p>Next, I had to model the shape I wanted in Fusion360. This was accomplished using four main tools that I will refer to later: the "two-point rectangle", "rectangular pattern", "sketch dimension", and "move to point" tools. These tools were mostly simple, although the rectangular pattern tool had properties that made it ideal for modeling an object that might be changed, as I mention below.</p>
+        <p>To begin, I used the "two-point rectangle" and "sketch dimension" tools to create the "body" of the design as well as the indentations and extrusions.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="Rect.png" alt="Final PDF" style="width:417px;height:269px;">
+                <br />
+                Fig 5. A rectangle to be used as an extrusion
+                <br />
+            </div>
+        </div>
+        <p>Next, I used the "move to point" tool to align the indentations and extrusions to the body before moving them to the proper locations.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="Rect1.png" alt="Initial movement" style="width:417px;height:269px;">
+                <br />
+                Fig 6. An extrusion and the body after initial movement
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="Rect2.png" alt="Final movement" style="width:417px;height:269px;">
+                <br />
+                Fig 7. An extrusion and the body after final movement
+                <br />
+            </div>
+        </div>
+        <p>Then, I used the "rectangular pattern" tool to evenly distribute multiple copies of the indentations and extrusions across the body and removed redundant edges.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="LEGO_final.png" alt="Final sketch" style="width:417px;height:269px;">
+                <br />
+                Fig 8. Final sketch of "LEGO" Design
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="LEGO_technical.png" alt="Technical layout" style="width:417px;height:269px;">
+                <br />
+                Fig 9. Technical Layout of "LEGO" Design
+                <br />
+            </div>
+        </div>
+        <p>After modifying the design in "Inkscape", I was left with a PDF with 16 copies of my first design. I neglected to include any engravings (blue), only including the red markings which denote full cuts.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="PDF.png" alt="Final PDF" style="width:417px;height:269px;">
+                <br />
+                Fig 10. Final PDF of "LEGO" Design
+                <br />
+            </div>
+        </div>
+        <p>I then imported this PDF into UCP and cut it out on the laser cutter.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="LaserCutter.png" alt="Laser Cutter" style="width:269px;height:269px;">
+                <br />
+                Fig 11. Laser Cutter and cut cardboard
+                <br />
+            </div>
+        </div>
+        <p><strong>Important: I did not account for enough kerf, and these pieces did not fit together properly.</strong></p>
+        <p>I redid the design slightly, accounting for a larger amount of kerf, and re-cut my new design. The rectangular pattern I used before turned out to be crucial in redoing this portion as it ensured an even spacing between the copied extrusions and indentation regardless of how large or small they were. This tool will be very useful if I model repetitive objects in the future.</p>
+        <p>This process was identical to the process explained above, and is omitted from this documentation as it does not add to the significance of my project.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="LEGO_v2.png" alt="LEGO Design V2" style="width:417px;height:269px;">
+                <br />
+                Fig 12. Redone "LEGO" Design
+                <br />
+            </div>
+        </div>
+        <p>These new pieces fit together perfectly! I could assemble them in many different ways, just like real LEGOs.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="week2_img.png" alt="Final sketch" style="width:269px;height:269px;">
+                <br />
+                Fig 13. "LEGO" Design Construction
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="Comparison.png" alt="Technical layout" style="width:200px;height:269px;">
+                <br />
+                Fig 14. V1 vs V2 Comparison
+                <br />
+            </div>
+        </div>
+
+        <h2>Part 2 - Preface</h2>
+        <p>Before moving on to modeling objects found around the shop, I followed a <a href="https://www.youtube.com/watch?v=Vkt7DN3GzQY" target="_blank">simple tutorial</a> to familiarize myself with 3D modeling using Fusion360.</p>
+        <p>First, the tutorial instructed that I create a simple sketch consisting of a rectangle and two circles.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="SketchM.png" alt="Final sketch" style="width:800px;height:269px;">
+                <br />
+                Fig 15. Measured sketch of practice design
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="SketchML.png" alt="Technical layout" style="width:700px;height:269px;">
+                <br />
+                Fig 16. Sketch of practice design
+                <br />
+            </div>
+        </div>
+        <p>Then, I extruded the sketch to create a 3D body.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="ExtrudedB.png" alt="LEGO Design V2" style="width:417px;height:269px;">
+                <br />
+                Fig 17. Extruded body of practice design
+                <br />
+            </div>
+        </div>
+        <p>I then created two holes in my body using the "hole" tool. I also added a fillet to the entire design to finish it.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="holesettings.png" alt="3D render of design" style="width:250px;height:269px;">
+                <br />
+                Fig 18. Window used to create holes
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="filletsettings.png" alt="Drawing Apparatus Design V1" style="width:341px;height:269px;">
+                <br />
+                Fig 20. Window used to create fillet
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="finaltutorial.png" alt="Drawing Apparatus Design V1" style="width:417px;height:269px;">
+                <br />
+                Fig 19. 3D Render of tutorial design
+                <br />
+            </div>    
+        </div>
+        
+        <h2>Part 2 - Modeling household objects</h2>
+        <p>For this part of the assignment, I measured and modeled two objects I found in the shop: a roll of tape and a bottle of glue. By measuring these objects using calipers, I can ensure that my model is perfectly to scale (which is useful for aplications such as 3D printing).</p>
+        <h3>Roll of Tape</h3>
+        <p>I wanted to start with a simpler object before moving onto a more complicated one. For this object, I will use its circular nature to my advantage by constructing a cross-section and rotating it around a center point.</p>
+        <p>First, I began by measuring the roll of tape with a pair of calipers. I determined that the tape had a diameter of 106.5mm, that the cross section is 15.5mm wide, 17.78mm tall, and the inner cardboard is ~2.8mm wide.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="Tape1.png" alt="Tape Measurement" style="width:310px;height:269px;">
+                <br />
+                Fig 21. Measuring the tape
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="Tape2.png" alt="Tape Measurement Again" style="width:260px;height:269px;">
+                <br />
+                Fig 22. Also Measuring the tape
+                <br />
+            </div>
+        </div>
+        <p>Next, I went about constructing a cross-section to the parameters mentioned above.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="Cross-section.png" alt="Picture of Cross-section" style="width:320px;height:269px;">
+                <br />
+                <p>Fig 23. Tape cross-section sketch*</p>
+                <p>*I decided to add an 0.05mm lip on either end of the sketch to distinguish between cardboard and tape.</p>
+            </div>
+        </div>
+        <p>Finally, I rotated the cross section such that it had an inner radius of 37.75mm ((106.5/2)-15.5).</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="3D_render_2.png" alt="Final Tape" style="width:320px;height:269px;">
+                <br />
+                <p>Fig 24. Final Roll of Tape render</p>
+            </div>
+        </div>
+        <!--Picture of final product-->
+
+        <h3>Bottle of Glue</h3>
+        <p>I then moved on to a more complicated object. The glue bottle contains 3 separate components and a variety of difficult curves.</p>
+        <p>First, I began by measuring the glue of tape with a pair of calipers. I determined that the body roughly elliptic with a major axis of length 64.61mm and minor axis with length 31.85mm. The body was roughly 100.81mm tall. More dimensions can be found in the file below, but are omitted from this page for not adding to the significance of the project.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="Glue1.png" alt="Glue Measurement" style="width:200px;height:269px;">
+                <br />
+                Fig 25. Measuring the bottle of glue
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="Glue2.png" alt="Glue Measurement Again" style="width:220px;height:269px;">
+                <br />
+                Fig 26. Also Measuring the bottle of glue
+                <br />
+            </div>
+        </div>
+        <p>Next, I went about constructing a cross-section of the body, extruding it, and adding a fillet to the parameters mentioned above.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="Extrusion.png" alt="Body extrusion" style="width:200px;height:269px;">
+                <br />
+                Fig 27. Body extrusion
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="Fillet.png" alt="Fillet window and settings" style="width:280px;height:269px;">
+                <br />
+                Fig 28. Fillet window and settings
+                <br />
+            </div>
+        </div>
+        <p>After this, I designed a circle and extruded it to serve as the lower part of my cap, and created a custom spline (which was rotated) to act as the nozzle.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="Cap.png" alt="Lower cap" style="width:269;height:269px;">
+                <br />
+                Fig 29. Lower part of cap sketch
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="Components.png" alt="Assembled components" style="width:169px;height:269px;">
+                <br />
+                Fig 31. Components assembled
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="Nozzle.png" alt="Nozzle" style="width:180px;height:269px;">
+                <br />
+                Fig 30. Nozzle sketch
+                <br />
+            </div>    
+        </div>
+        <p><strong>Important: As I mentioned above, this design contains 3 parts (components). I created an assembly to have the act together.</strong></p>
+        <p>To start, I turned all the bodies into components and I grounded the body that constitutes the bottle. This made it the "base" of the assembly.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="component.png" alt="Body extrusion" style="width:400px;height:269px;">
+                <br />
+                Fig 32. Window used to convert bodies to components
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="Ground.png" alt="Fillet window and settings" style="width:280px;height:269px;">
+                <br />
+                Fig 33. Setting used to ground the base
+                <br />
+            </div>
+        </div>
+        <p>Next, I created a rotating join between the bottom part of the cap and the body. This allowed it to rotate like a real cap.</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="Joint.png" alt="Final Glue" style="width:203px;height:269px;">
+                <br />
+                <p>Fig 34. Window used to create joints</p>
+            </div>
+        </div>
+        <p>Then I created a fixed joint between the nozzle and the bottom part of the cap. This allowed them to rotate together just like in real life.</p>
+        <p>Finally, I added a bit of coloring and the render was complete!</p>
+        <div style="width:100%; padding-bottom: 290px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="3D_render_3.png" alt="Body extrusion" style="width:200px;height:269px;">
+                <br />
+                Fig 35. Final render of glue bottle
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="3D_render_4.png" alt="Fillet window and settings" style="width:180px;height:269px;">
+                <br />
+                Fig 36. Glue bottle with rotation visible
+                <br />
+            </div>
+        </div>
+        <h2>Concluding Remarks</h2>
+        <p>This project helped me feel very comfortable using Fusion360. I learned a lot of critical design tools such as design patterns, fillets, holes, and assemblies. These tools seem like they will be very useful as I begin to model my final project as well as I begin making designs to 3D print. As I continue to become more familiar with Fusion360, I'd like to learn how to create threads like on a real glue bottle such that rotating the cap would cause it to raise and lower just like a real bottle cap. This similar principle will be useful if I need to model something like gears, where one type of motion can cause other components to exhibit other kinds of motion.</p>
+
+        <h2>Files Mentioned in this Document</h2>
+        <a href="Lego Sketch.dxf" download><p>"LEGO" Sketch (.DXF)</p></a>
+        <a href="Roll of Tape.stl" download><p>Roll of Tape Render (.STL)</p></a>
+        <a href="Glue Bottle.f3d" download><p>Bottle of Glue Render and Assembly* (.F3D)</p></a>
+        <p>*This file may not match some of the images above. I made a careless error and forgot to save the file while taking screenshots. It should be similar enough for all practical purposes.</p>
+    </div>
+</body>
+</html>
