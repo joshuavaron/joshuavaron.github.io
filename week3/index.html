@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+    <title>Lesson 2</title>
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
+</head>
+<body>
+    <div style="width:100%;"> 
+        <div style="float:left; width:80%;">
+            <h1>Lesson 3 - Electronics and Tools</h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../about/index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">About</a></h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">Home</a></h1>
+            <br />
+        </div>
+        <hr width="100%;" 
+        color="black" 
+        size="2" 
+        align="middle">    
+    </div>
+
+    <div>
+        <h2>Introduction</h2>
+        <p>Today we were challenged to create a kinetic sculpture that uses circuitry to move. By the end of this lesson we were supposed to know how to power simple circuits, how to use tools to cut wood and other materials, and how to drill and tap a hole.</p>
+        <p>I remember the first time that I saw a wave pool and how fascinated I was with them. Using vibrations and barriers, these pools can generate different patterns of waves that behave differently. I wanted to emulate this phenomenon using sawdust as my particulate matter, and an eccentric motor to generate the vibrations that I needed.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="wave_pool.gif" alt="wave pool" style="width:350px;height:350px;">
+                <br />
+                <p>Fig 1. Wave pool render</p>
+            </div>
+        </div>
+        <h2>Components</h2>
+        <p>This project required 3 components: the box to hold the sawdust, the sawdust, and the apparatus to shake the box.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="week3_image.png" alt="3D render of design" style="width:350px;height:350px;">
+                <br />
+                Fig 2. 3D Press-fit box
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="motorfit.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 4. Motor held in place by motor holder
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="bandsaw.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 3. Bandsaw covered in sawdust
+                <br />
+            </div>    
+        </div>
+        <p>In Figures 1, 2, and 3, I display the the 3 main components used in my kinetic sculpture.</p>
+        <h2>Part 1 - Box press-fit construction</h2>
+        <p>In order to make the "wave pool" sculpture, I needed to create a container to hold the dust and the vibrating apparatus. It was important that this container was held together tight enough so that the dust did not leak out, and that the material was rigid enough to not deform with the vibrations. For these reason, I decided a press-fit box out of wood would not only satisfy these conditions, but was something I was able to make.</p>
+        <p>To start, I used a software that Bobby recommended: MakerCase. This software created the schematic for a press-fit box, accounting for size, material width, and kerf. After measuring my material and inputting these values into the software, I had my schematic to cut.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="sample_box.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 5. MakerCase's render of the box
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="values.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 6. Layout of some settings
+                <br />
+            </div>
+        </div>
+        <p>I then exported the schematic as a "dxf" file and edited it in Inkscape. After giving all of the lines 0.001 thickness and red coloration (settings for cut), I ran the design on the laser cutter.</p>
+        <h2>Part 2 - Vibration apparatus</h2>
+        <p>In class we were introduced to a variety of motors, including an eccentric motor. As I have never worked with an eccentric motor before, I decided I was going to use this in my project. In order to mechanically attatch this motor to the box designed in Step 1, I had to create a custom piece of hardware.</p>
+        <p>First, I measured the diameter of the motor that I was going to use. I then used Fusion360 to create a basic square with a hole in the center for the motor.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="motor_holder.png" alt="Motor holder" style="width:350px;height:350px;">
+                <br />
+                Fig 7. 2D sketch of motor holder
+                <br />
+            </div>
+        </div>
+        <p>After editing this design in Inkscape and cutting it I tested it with a motor. Sure enough, it fit perfectly!</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="motorfit.png" alt="Motor holder" style="width:350px;height:350px;">
+                <br />
+                Fig 8. Motor held in place by motor holder
+                <br />
+            </div>
+        </div>
+        <p>Anticipating that the motor might still fall out when it starts to vibrate, I added rubber cement to the holder to provide resistance to this.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="rubber.png" alt="Final PDF" style="width:350px;height:350px;">
+                <br />
+                Fig 9. Rubber cement application
+                <br />
+            </div>
+        </div>
+        <p>After this, I drilled and tapped holes into both the box and the motor holder to hold them together.</p>
+        <p><strong>Important: In order to drill into the box, I had to drill into the plies. If I did not go slowly, the wood would splinter. Additionally, it was critical that I had the wood perfectly vertical.</strong></p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="drill.png" alt="Final sketch" style="width:350px;height:350px;">
+                <br />
+                Fig 10. Drill press and setup
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="tapping.png" alt="Technical layout" style="width:350px;height:350px;">
+                <br />
+                Fig 11. Tapping a hole into the plies
+                <br />
+            </div>
+        </div>
+        <p>After performing the same steps on the motor holder, I screwed these parts together. Unfortunately, the M3x20 screws were the only available screws that could go through both pieces. To accommodate this restriction, I had to redo the drilling and tapping for deeper holes.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="screw.png" alt="Final PDF" style="width:350px;height:350px;">
+                <br />
+                Fig 12. Depth of screw penetration
+                <br />
+            </div>
+        </div>
+        <p>I then grabbed the eccentric motor and soldered leads onto it.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <video width="700" autoplay loop muted>
+                    <source src="soldering.mov" type="video/mp4">
+                </video>
+                <br />
+                Fig 13. Soldering leads
+                <br />
+            </div>
+        </div>
+        <p><strong>Important: I used much more solder than I likely needed to. I was afraid that the leads would snap off as the sculpture vibrated.</strong></p>
+        <p>I then tested my sculpture, and was met with an unexpected problem: <strong>the vibrations were causing the screws to unscrew themselves</strong>. I added some extra rubber cement to help alleviate the shock from the vibrations, which seemed to work.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="screws.png" alt="LEGO Design V2" style="width:350px;height:350px;">
+                <br />
+                Fig 14. Loosened screws
+                <br />
+            </div>
+        </div>
+        <h3>Reduce, Reuse, Recycle!</h3>
+        <p>Now that my box was able to vibrate, I needed a way to get the sawdust I needed to fill it. For this, I turned to the band saw, which was absolutely covered in sawdust.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="bandsaw.png" alt="Final sketch" style="width:350px;height:350px;">
+                <br />
+                Fig 15. Bandsaw covered in sawdust
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="sawdust.png" alt="Technical layout" style="width:350px;height:350px;">
+                <br />
+                Fig 16. Sawdust inside kinetic sculpture
+                <br />
+            </div>
+        </div>
+        <p>After collecting the sawdust from the band saw, I now had to find the optimal voltage and current to run my circuit with. For this, I used the benchtop power supply and modulated it until I got the amount of vibration I was looking for (6v). Then, by measuring the resistance of the motor, I could determine the amount of current it was using with Ohm's Law.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="power.png" alt="Final sketch" style="width:350px;height:350px;">
+                <br />
+                Fig 17. Benchtop power supply
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="multimeter.png" alt="Technical layout" style="width:350px;height:350px;">
+                <br />
+                Fig 18. Multimeter measuring resistance
+                <br />
+            </div>
+        </div>
+        <p>Because the circuit used 6 volts and the motor had a resistance of 14 ohms, the amount of <strong>current it was using is around 429mA.</strong></p>
+        <p>Finally, I had finished my kinetic sculpture!</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <video width="1050" autoplay loop muted>
+                    <source src="final_box.mov" type="video/mp4">
+                </video>
+                <br />
+                Fig 19. Final kinetic sculpture
+                <br />
+            </div>
+        </div>
+        <h2>Concluding Remarks</h2>
+        <p>This project was a great way to familiarize myself with the eccentric motor, which, prior to this class, I had never used before. I also learned a lot about how to mechanically attatch pieces of of a larger project, which will undoubtedly come up many more times in this class and my future engineering projects. I definitely think that my solution was not the best one, and I would love to spend time seeing if there are other simple ways of mechanically attatching pieces like these together.</p>
+
+        <h2>Files Mentioned in this Document</h2>
+        <a href="motor_holder.dxf" download><p>Motor Holder (.DXF)</p></a>
+        <a href="box.dxf" download><p>Box (.DXF)</p></a>
+    </div>
+</body>
+</html>
