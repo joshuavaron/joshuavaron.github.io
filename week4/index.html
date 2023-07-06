@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+    <title>Lesson 4</title>
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
+</head>
+<body>
+    <div style="width:100%;"> 
+        <div style="float:left; width:80%;">
+            <h1>Lesson 4 - Microcontroller Programming</h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../about/index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">About</a></h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">Home</a></h1>
+            <br />
+        </div>
+        <hr width="100%;" 
+        color="black" 
+        size="2" 
+        align="middle">    
+    </div>
+
+    <div>
+        <h2>Introduction</h2>
+        <p>Today we were challenged to program an Arduino to control something and make a diagram of the circuit we used. By the end of this lesson we were supposed to know how to use and program an Arduino, build simple circuits, and drive motors using an H-Bridge.</p>
+        <p>I have always loved programming microcontrollers, often playing around with my Raspberry Pi at home. I have never used an Arduino before, and wanted to use one to create a light display. Drawing inspiration from the many signs I have seen using moving lights as an attention-getter, I set out to make a series of lights "move" in a wave pattern.</p>
+        <h2>Components</h2>
+        <p>This project required 3 components: the Arduino, the circuit, and the program to tie the two together.</p>
+        <h2>Part 0 - Setting up the Arduino IDE</h2>
+        <p>I had an extremely difficult time setting up the Arduino ESP32-S2 in the Arduino IDE. Now that I solved it, I feel as though it is a significant part of my project and is worth documenting for others.</p>
+        <p>To begin, open the Arduino IDE and click on "Tools".</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="tools.png" alt="LEGO Design V2" style="width:350px;height:350px;">
+                <br />
+                Fig 1. Tools tab
+                <br />
+            </div>
+        </div>
+        <p>Then go to "Board", and download "esp32".</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="download.png" alt="LEGO Design V2" style="width:350px;height:350px;">
+                <br />
+                Fig 2. Downloading "esp32"
+                <br />
+            </div>
+        </div>
+        <p>Then select "ESP32S2 Dev Module as your working board.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="dev.png" alt="LEGO Design V2" style="width:350px;height:350px;">
+                <br />
+                Fig 3. Selecting the working board
+                <br />
+            </div>
+        </div>
+        <p>Finally, <strong>make sure that the USB connection is in the port shown below</strong>. If it is not, the Arduino IDE will not recognize that there is a board being used.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="port.png" alt="LEGO Design V2" style="width:350px;height:350px;">
+                <br />
+                Fig 4. Proper port for ESP32
+                <br />
+            </div>
+        </div>
+        <h2>Part 1 - Moving Light Circuit</h2>
+        <p>In order to make the moving light circuit, I needed to first work on making multiple lights blink on and off. I started off by attatching the LEDs and the ground.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="led.png" alt="3D render of design" style="width:350px;height:350px;">
+                <br />
+                Fig 5. LEDs lined up
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="ground.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 7. Ground pin on Arduino
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="led_neg.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 6. Ground wiring to breadboard
+                <br />
+            </div>    
+        </div>
+        <p>Next, I added the output pins to each of the LEDs and programmed the Arduino to make them blink. This is a variation of the sample code that Arduino provides. After making some modifications to it, this was my circuit and code</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="pos.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 8. Wiring to the anodes of the LEDs
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="pos3.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 9. Wiring layout on Arduino
+                <br />
+            </div>
+        </div>
+        <h3>Code:</h3>
+        <pre class="code">
+            <code class="language-css">
+                void setup() {
+                    pinMode(1, OUTPUT);
+                    pinMode(2, OUTPUT);
+                    pinMode(3, OUTPUT);
+                    pinMode(4, OUTPUT);
+                    pinMode(5, OUTPUT);
+                    pinMode(6, OUTPUT);
+                    pinMode(7, OUTPUT);
+                }
+                
+                
+                void loop() {
+                    for(int i = 1; i<=7; i++){
+                        digitalWrite(i, HIGH);
+                    }
+                    delay(1000);
+                    for(int i = 1; i<=7; i++){
+                        digitalWrite(i, LOW);
+                    }
+                    delay(1000);
+                }     
+            </code>
+        </pre>
+        <p>And this was how it worked!</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <video width="1050" autoplay loop muted>
+                    <source src="IMG_4352.mov" type="video/mp4">
+                </video>
+                <br />
+                Fig 10. Blinking LEDs
+                <br />
+            </div>
+        </div>
+        <p>I then modified the code to create half of the wave pattern I was looking for. This was also my first time making use of functions besides the required setup() and loop() functions. This was the function I created and the modified loop() function.</p>
+        <h3>Code:</h3>
+        <pre class="code">
+            <code class="language-css">
+                void loop() {
+                    wave();
+                }
+                
+                
+                void wave() {
+                    for(int i = 1; i<=7; i++){
+                        digitalWrite(i, HIGH);
+                        digitalWrite((i%7)+1, LOW);
+                        delay(80);
+                    }
+                }                  
+        </code>
+        </pre>
+        <p>And now it does this!</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <video width="1050" autoplay loop muted>
+                    <source src="IMG_4351.mov" type="video/mp4">
+                </video>
+                <br />
+                Fig 11. Half-wave pattern
+                <br />
+            </div>
+        </div>
+        <p>I wanted to add an additional element to my project, and started messing around with some of the input options on the Arduino. During this process I discovered that the Arduino is <strong>very sensitive to voltage input</strong>.</p>
+        <p>Because of this I was able to make the program only run when I was touching the Arduino, effectively using my body as the conductor. Here is the new circuit and modified code.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="pos2.png" alt="3D render of design" style="width:350px;height:350px;">
+                <br />
+                Fig 12. Positive wiring to be used with input
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="5v.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 14. 5v pin on Arduino
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="tocar.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 13. Grey wire to run current through me
+                <br />
+            </div>    
+        </div>
+        <h3>Code:</h3>
+        <pre class="code">
+            <code class="language-css">
+                void setup() {
+
+                    ...
+
+                    pinMode(21, INPUT);
+                }
+                  
+                void loop() {
+                    wave();
+                    reversewave();
+                }
+                              
+                void reversewave() {
+                    for(int i = 1; i<=7; i++){
+                      while(digitalRead(21) == LOW){}
+                      digitalWrite(i, LOW);
+                      digitalWrite((i%7)+1, HIGH);
+                      delay(80);
+                    }
+                }
+                
+                void reversewave() {
+                    for(int i = 1; i<=7; i++){
+                      while(digitalRead(21) == LOW){}
+                      digitalWrite(i, LOW);
+                      digitalWrite((i%7)+1, HIGH);
+                      delay(80);
+                    }
+                }  
+        </code>
+        </pre>
+        <p>And this is the final product!</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <video width="1050" autoplay loop muted>
+                    <source src="IMG_4349.mov" type="video/mp4">
+                </video>
+                <br />
+                Fig 15. Final Arduino project
+                <br />
+            </div>
+        </div>
+        <h2>Part 2 - Circuit Diagram</h2>
+        <p>In the past, I have used a circuit design software called "EasyEDA" because it has a partnership with a PCB milling firm. I used this software today to model the circuit that I used in my final design.</p>
+        <p>To start, I opened the "Library" tab and selected the ESP32-S2 board.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="Library.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 16. EasyEDA's Library tab
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="Esp.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 17. ESP32-S2 layout
+                <br />
+            </div>
+        </div>
+        <p>Next, I went back to the "Commonly Library" tab and selected 7 LEDs.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="commonly.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 18. EasyEDA's Commonly Library tab
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="leds.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 19. LEDs laid out
+                <br />
+            </div>
+        </div>
+        <p>I then added wiring from the output pins of the Arduino the anodes of the LEDs.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="anode.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 20. Wiring from Arduino to LEDs
+                <br />
+            </div>
+        </div>
+        <p>Finally, I added ground to the cathodes of the LEDs and wired up the input pin, using a button to represent my hand touching the Arduino.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="cathode.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 21. Final schematic
+                <br />
+            </div>
+        </div>
+        <h2>Concluding Remarks</h2>
+        <p>This project made me really familiar with the previously foreign Arduino. I was able to accomplish everything I set out to accomplish, without having to scale back parts of my original plan. Because the Arduino is going to play such a large role in the production of my final project, I'm glad I was able to build a solid foundation quickly. I have already begun experimenting with the MPU6050 chip, and I am excited to see where my project goes!</p>
+
+        <h2>Files Mentioned in this Document</h2>
+        <a href="wave.ino" download><p>Wave Code (.INO)</p></a>
+    </div>
+</body>
+</html>
