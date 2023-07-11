@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+    <title>Lesson 5</title>
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
+</head>
+<body>
+    <div style="width:100%;"> 
+        <div style="float:left; width:80%;">
+            <h1>Lesson 5 - 3D Design and Printing</h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../about/index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">About</a></h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">Home</a></h1>
+            <br />
+        </div>
+        <hr width="100%;" 
+        color="black" 
+        size="2" 
+        align="middle">    
+    </div>
+
+    <div>
+        <h2>Introduction</h2>
+        <p>Today we were challenged to 3D print a component for our final project and to use Revopoint to scan an object we found in the lab. By the end of this lesson we were supposed to know how to use the Prusa 3D printers, design 3D objects, and scan complex or detailed objects.</p>
+        <p>I have always been very partial to the convenience of 3D printers. As soon as my school got its first 3D printer, I immediately began using it as much as I could to design custom objects made of plastic. I was excited to use the skills I already had as well as new skills I learned in class in order to further my final project. I decided to make a ball-join "joystick" to mount my gyroscope onto (similar to Ibrahim's pen suggestion documented in my final project). Additionally, I scanned a glue bottle as a reference to my first time using Fusion360 in Lesson 2!</p>
+        <h2>Components</h2>
+        <p>This project had 2 components: the ball-joint joystick and the glue bottle scan.</p>
+        <h2>Part 1 - Ball-Joint Joystick</h2>
+        <p>In order to make the joystick, I needed to first research how ball-joints worked. I used <a href="https://www.mechanicaleducation.com/what-you-need-to-know-about-ball-joints/">this resource</a> to become familiar with the technology and eventually decided on a design.</p>
+        <p>First, I created my ball and added an axle through it. I was aiming for 40 degrees of rotation on either side, and the proportion between the sizes (see below) reflected that.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="ballaxle.png" alt="3D render of design" style="width:350px;height:350px;">
+                <br />
+                Fig 1. Ball and axle
+                <br />
+            </div>
+        </div>
+        <p>Next, I added an arbitrary cylinder and added a copy of my original ball centered in it.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="cyl.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 2. Cylinder
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="cylbal.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 3. Cylinder with raised ball
+                <br />
+            </div>
+        </div>
+        <p>I then lowered the ball into the cylinder by 7mm. *Compare this with the image above.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:right; width:100%; text-align: center;">
+                <img src="lowered.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 4. Lowered ball
+                <br />
+            </div>
+        </div>
+        <p>I then combined these two bodies to create my indent, and turned both resulting bodies into components.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:right; width:100%; text-align: center;">
+                <img src="hole.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 5. Cylinder with hole
+                <br />
+            </div>
+        </div>
+        <p>Then, I created an assembly with a ball joint. This process can be seen in my documentation for Lesson 2.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="assembly.png" alt="Final sketch" style="width:360px;height:350px;">
+                <br />
+                Fig 6. Assembly
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="balljoint.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 7. Settings for ball joint
+                <br />
+            </div>
+        </div>
+        <p>This is the final design that I created. By clicking and dragging the top of the shaft, you can see the theoretical motion of my joystick.</p>
+        <p align="center"><iframe src="https://student122726.autodesk360.com/shares/public/SH512d4QTec90decfa6e0c093993b86dbecf?mode=embed" width="800" height="600" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe></p>
+        <p>After this, I printed the design and removed the supports.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:right; width:100%; text-align: center;">
+                <img src="supports.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 8. Supports, partially removed
+                <br />
+            </div>
+        </div>
+        <p>And then I used a heat gun to force the parts together.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:right; width:100%; text-align: center;">
+                <img src="heat_gun.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 9. Heat Gun and Joystick
+                <br />
+            </div>
+        </div>
+        <p>Which left me with my final joystick.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:right; width:100%; text-align: center;">
+                <img src="final.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 10. Final Joystick
+                <br />
+            </div>
+        </div>
+        <h2>Part 2 - Revopoint Scan</h2>
+        <p>In this lesson we were taught how to use Revopoint to scan 3D objects. I decided to scan a bottle of glue. This presented a few challenges such as its height, the required distance, and color. I will address these as I go on.</p>
+        <p>First, I set up the glue bottle, turn table, and camera. This allowed me to see which parts of the glue bottle the software was picking up.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="setup.png" alt="3D render of design" style="width:350px;height:350px;">
+                <br />
+                Fig 11. Scanning setup
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="glue1.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 13. Point cloud visualization of camera view
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="scan.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 12. Settings for final scan
+                <br />
+            </div>    
+        </div>
+        <p>Satisfied, I then fused my point cloud to create a rough model.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="pc1.png" alt="Final sketch" style="width:360px;height:350px;">
+                <br />
+                Fig 14. Point Cloud
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="pc2.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 15. Fused Point Cloud
+                <br />
+            </div>
+        </div>
+        <p>After this, I created a mesh. This represents the final model before post-processing.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="mesh.png" alt="Final sketch" style="width:360px;height:350px;">
+                <br />
+                Fig 16. Created Mesh
+                <br />
+            </div>
+        </div>
+        <p>I then opened my file in RevoStudio. First, I filled the holes.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="opened.png" alt="Final sketch" style="width:360px;height:350px;">
+                <br />
+                Fig 17. Opened Mesh
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="holes.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 18. Settings for Filling Holes
+                <br />
+            </div>
+        </div>
+        <p>Then I smoothed the mesh.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="smooth.png" alt="Final sketch" style="width:360px;height:350px;">
+                <br />
+                Fig 19. Settings for Smoothing Mesh
+                <br />
+            </div>
+        </div>
+        <p>And finally, I simplified it to remove some of the unwanted texture.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="simplify.png" alt="Final sketch" style="width:360px;height:350px;">
+                <br />
+                Fig 20. Settings for Simplifying Mesh
+                <br />
+            </div>
+        </div>
+        <p>This left me with my <a href="glue_bottle_mesh_rgb.stl" download>final scan</a>.</p>
+        <p>As you can likely see, this scan was extremely rough. I believe that this is because my object was too far away (because of how large it was) as well as the fact that it was very white (in my experience, darker colors work better). However, this roughness gave me the opportunity to experiment with some interesting post-processing techniques!</p>
+        <h2>Conclusion</h2>
+        <p>This project gave me tons of experience using and printing with Fusion360. I was able to make a concrete step towards the completion of my final project, which was also a great feeling! I am excited to do some testing using my joystick design, as well as possibly changing it or using a different design altogether. I reccomend looking at my documentation for my final project as it shows how this component plays in.</p>
+        <h2>Files Mentioned in this Document</h2>
+        <a href="glue_bottle.stl" download><p>Glue Bottle Post (.STL)</p></a>
+        <a href="glue_bottle_fuse.ply" download><p>Glue Bottle Fuse (.PLY)</p></a>
+        <p>One Glue Bottle file was too large for GitHub.</p>
+        <a href="Ball Socket.f3d" download><p>Ball Socket (.F3D)</p></a>
+        <a href="Joystick.stl" download><p>Ball Socket (.STL)</p></a>
+        <a href="Ball Socket.gcode" download><p>Ball Socket (.GCODE)</p></a>
+    </div>
+</body>
+</html>

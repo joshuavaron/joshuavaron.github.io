@@ -9,7 +9,7 @@
         }
     </style>
     <title>Prototype</title>
-    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../../style.css">
 </head>
 <body>
     <div style="width:100%;"> 
@@ -35,8 +35,7 @@
         <h2>Introduction</h2>
         <p>This page houses prototyping process of my final project.</p>
         <h2>Prototypes</h2>
-        <p>UNDER CONSTRUCTION</p>
-        <div style="width:100%; padding-bottom: 250px;"> 
+        <div style="width:100%; padding-bottom: 20px; height: 410px;"> 
             <div style="float:left; width:50%;">
                 <img src="chalk.png" alt="2D Model of Problem" style="width:410px;height:410px;">
                 <br />
@@ -50,6 +49,77 @@
                 <br />
             </div>    
         </div>
+        <p>After designing these chalk holders, I moved on to the gyroscopic aspect of my final project. However, I will need to eventually revisit the above designs when I am building the final drawing machine.</p>
+        <p>To begin working on the gyroscopic element of my final project, I first figured out how to operate the MPU6050 gyroscope/accelerometer. This process is long, and will be documented in another addition in the Final Project page.</p>
+        <p>Once I figured out how to get the gyroscope to measure the relative pitch, roll, and yaw of itself, I began working on transforming this into coordinates.</p>
+        <p>Starting with the pitch, this was my code:</p>
+        <pre class="code">
+            <code class="language-css">
+                #include "Wire.h"
+                #include <MPU6050_light.h>
+                
+                #define A1A 3
+                #define A1B 2
+                
+                int prev_x = 0;
+                int prev_z = 0;
+                
+                int x_counter = 0;
+                
+                MPU6050 mpu(Wire);
+                unsigned long timer = 0;
+                void setup() {
+                  pinMode(A1A, OUTPUT);
+                  pinMode(A1B, OUTPUT);
+                  Serial.begin(9600);
+                  Wire.begin(21, 19, 100000);
+                  byte status = mpu.begin();
+                  Serial.print(F("MPU6050 status: "));
+                  while (status != 0) {
+                    Serial.println(status);
+                  } // stop everything if could not connect to MPU6050
+                  Serial.println(F("Calculating offsets, do not move MPU6050"));
+                  delay(1000);
+                  mpu.calcOffsets(); // gyro and accelero
+                  Serial.println("Done!\n");
+                 }
+                void loop() {
+                  mpu.update();
+                  if ((millis() - timer) > 10) { // print data every 10ms
+                    if(abs(mpu.getAngleX()-prev_x)>0.05){
+                      x_counter = min(x_counter+1, 10);
+                    } else {
+                      x_counter = max(x_counter-1, 0);
+                    }
+                    if(x_counter >= 7){
+                      if(mpu.getAngleX() > prev_x){
+                        digitalWrite(A1A,LOW);
+                        digitalWrite(A1B,HIGH);
+                      } else {
+                        digitalWrite(A1A,HIGH);
+                        digitalWrite(A1B,LOW);
+                      }
+                    } else {
+                      digitalWrite(A1A,LOW);
+                      digitalWrite(A1B,LOW);
+                    }
+                    prev_x = mpu.getAngleX();
+                    timer = millis();
+                  }
+                }
+            </code>
+        </pre>
+        <p>As you can see, this design attempted to minimize noise by only acting if the angle changed by more than 0.05 degrees, every 10ms, for 7 steps in a row. This was not ideal, as I "lost" a large amount of movement data.</p>
+        <p>After removing the motor movement (digitalWrite) and printing the coordinates instead, this was the data I got.</p>
+        <div style="width:100%; padding-bottom: 0px; height: 20px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="measurements-1.png" alt="Final sketch" style="width:700px;height:550px;">
+                <br />
+                Fig 8. Measurements in Inches (Program:Exact, Black:Blue)
+                <br />
+            </div>
+        </div>
+        <p>Clearly, I was doing pretty well, but there was still a long way to go.</p>
         <h2>Files Mentioned in this Document</h2>
         <a href="Final Project Chalk Holder v1.f3d" download><p>Chalk Holder (.F3D)</p></a>
     </div>
