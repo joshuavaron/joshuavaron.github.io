@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+    <title>Lesson 6</title>
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
+</head>
+<body>
+    <div style="width:100%;"> 
+        <div style="float:left; width:80%;">
+            <h1>Lesson 6 - Electronic Input Devices</h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../about/index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">About</a></h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">Home</a></h1>
+            <br />
+        </div>
+        <hr width="100%;" 
+        color="black" 
+        size="2" 
+        align="middle">    
+    </div>
+
+    <div>
+        <h2>Introduction</h2>
+        <p>Today we were challenged to build our own sensor along with a capacitive touch sensor. By the end of the lesson we were supposed to be familiar with how to use voltage dividers to measure voltage drops between variable and constant resistors, as well as how to build simple capacitive touch circuits.</p>
+        <p>I am really interested in how capacitive touch technology works, and I was very excited to try using it in this project. Additionally, I wanted to expand on just a simple light sensor, and decided to make a sensor that could be used to track a source of light.</p>
+        <h2>Components</h2>
+        <p>This project required 2 components: the light sensor and the capacitive touch sensor.</p>
+        <h2>Part 1 - Light Sensor</h2>
+        <p>For my light sensor I decided to create a sensor that can identify which direction a light source is coming from. This could be useful in agricultural applications, and seemed like a really fun project. I started by designing the case for the sensor in Fusion360. This began by creating a cube with two open faces.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="cube1.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 1. Cube with two open faces
+                <br />
+            </div>
+        </div>
+        <p>Next, I duplicated this box, reflected it across the wide face, and combined it with my original box. I then sliced and printed it.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="cube2.png" alt="3D render of design" style="width:350px;height:350px;">
+                <br />
+                Fig 2. 2 cubes put together
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="printed.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 4. 3D printed case
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="filament.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 3. Loaded black filament
+                <br />
+            </div>    
+        </div>
+        <p align="center"><iframe src="https://student122726.autodesk360.com/shares/public/SH512d4QTec90decfa6e3af02b5e2f79fd29?mode=embed" width="800" height="600" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe></p>
+        <p>*Note: I used black filament to absorb the most light in an attempt to decrease noise. I then drilled pairs of small holes into each box and pushed a photoresistor through each pair.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="photo1.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 5. A photoresistor in one of the cubes
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="photo2.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 6. Both photoresistors in place
+                <br />
+            </div>
+        </div>
+        <p>Finally, I soldered a 10k resistor to both of the photoresistors, with a wire at this junction.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="soldered.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 7. Wiring for the light sensor circuit
+                <br />
+            </div>
+        </div>
+        <p>Now I was able to wire my sensor to the Arduino. I started by wiring the 10k resistors to the 3V output pins, the wires at the junctions to pins 9 and 10, and the free ends of the photoresistors to ground.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:right; width:100%; text-align: center;">
+                <img src="diagram.png" alt="Technical layout" style="width:350px;height:350px;">
+                <br />
+                Fig 8. Circuit diagram
+                <br />
+            </div>
+        </div>
+        <p>I then began writing the code required to get useful data from the sensor.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+            <iframe src=https://create.arduino.cc/editor/joshuavaron/f0357c11-f3a0-4fae-86e8-f26ffc56ec18/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>As you can see, I created a class to represent a single photoresistor. I then instantiated two instances of this class: one for each side of the sensor. Finally, I read the data from these sensors every 100ms.</p>
+        <p>Using my iPhone 11's flashlight setting in a room with no lights or windows, I measured the data I got at different distances (5 and 30.5cm) and angles (90 degrees represents center) and averaged over 20 cycles. The data is displayed below.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="data1.png" alt="Final sketch" style="width:600px;height:350px;">
+                <br />
+                Fig 9. Collected data (deg:dist:val | r:g:b)
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="data2.png" alt="Technical layout" style="width:600px;height:350px;">
+                <br />
+                Fig 10. Collected data
+                <br />
+            </div>
+        </div>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="data3.png" alt="Final sketch" style="width:600px;height:350px;">
+                <br />
+                Fig 11. Collected data
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="curve1.png" alt="Technical layout" style="width:600px;height:350px;">
+                <br />
+                Fig 12. Fitted curve to 5cm
+                <br />
+            </div>
+        </div>
+        <p>This data is clearly more consistent and has a smoother range at 5cm, so I will continue to work with this as my sensor's "optimal" range.</p>
+        <p>I quickly fitted a curve to my 5cm data: output = (16122/(1+e^(-0.06(x-90))))-8137. This equation can be used to interpolate the results that will be found between 0 and 180 degrees.</p>
+        <p>In order to calibrate my sensor, I first need to determine a range of degrees that can be considered "center". I decided that 85-95 degrees was a fair range, and used my equation from above to determine that this meant the output must be between -1276 and 1124. This gave me my new code:</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+            <iframe src=https://create.arduino.cc/editor/joshuavaron/7c00d935-ae68-4051-9855-e5001a141eaf/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>This code worked perfectly, giving me adjustments whenever I strayed too far off course.</p>
+        <h2>Part 2 - Capacitive Touch Matrix</h2>
+        <p>After my recent frustrations using the MPU6050 Gyroscope for my final project, I wanted to experiment with capacitive touch as a potential input device for my final project. For this I would need to determine the exact position of a grounded object within the matrix. </p>
+        <p>To start, I designed and cut a 7x7in square of plywood.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="square1.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 13. 7x7in board
+                <br />
+            </div>
+        </div>
+        <p>Next, I marked copper tape at 1in intervals and cut it using the paper cutter.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="marked.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 14. Marked copper tape
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="cut.png" alt="Technical layout" style="width:400px;height:350px;">
+                <br />
+                Fig 15. A square of copper tape on board
+                <br />
+            </div>
+        </div>
+        <p>I then added added one of these squares to the plywood, soldered a wire to it, and covered the solder with copper tape.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="copper1.png" alt="3D render of design" style="width:350px;height:350px;">
+                <br />
+                Fig 16. Copper tape stuck on board
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="copper3.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 18. Solder joint covered with copper tape
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="copper2.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 17. Wire soldered to copper tape
+                <br />
+            </div>    
+        </div>
+        <p>Finally, I repeated this with the remaining 11 squares (3 squares in the center were used for testing).</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="copper4.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 19. Final board
+                <br />
+            </div>
+        </div>
+        <p>I now had a matrix of 12 capacitive touch pads, and I wired 4 of them up to 100k resistors connected to GPIO pins 1-4. I then wired the back plate made of aluminum foil to GPIO pin 42 and made the following code:</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="tin.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 20. Tin foil backing
+                <br />
+            </div>
+        </div>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+            <iframe src=https://create.arduino.cc/editor/joshuavaron/133bdb78-10b5-4191-b0a1-354e29eee3e2/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>        
+        </div>
+        <p>As you can see, this code is extremely similar to the code from Part 1. I create a class to represent a single capacitive cell and instantiate 4 of them along with defining tx_pin. I then sum the difference between the high and low readings of the capacitive cells over 100 cycles. In my testing, there was a clear trend between the proximity between my finger and a given capacitive cell, and its reading. I decided to measure these readings from various distances with one cell. This is the data I collected, averaged over 5 tests.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="data4.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 21. Collected data (dist:val | x:y)
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="curve2.png" alt="Technical layout" style="width:600px;height:350px;">
+                <br />
+                Fig 22. Fitted curve to collected data
+                <br />
+            </div>
+        </div>
+        <p>After plotting the data and fitting a curve to it ((65000/(1+e^(-0.75x)))-31286), I am able to see that I can likely rely on a given capacitive cell to determine distances within 3cm. Because my cells are placed 2.54cm apart, I believe that this will allow me to determine the location of a grounded object with acceptable accuracy, although significantly more testing is required.</p>
+        <h2>Concluding Remarks</h2>
+        <p>This project gave me a lot of experience with fitting curves to data and using those curves to determine an acceptable range of measurements. I anticipate that my input device will be the most difficult aspect of my final project, but I believe this project left me well-equipped for the challenge. I was also able to get a lot of experience with capacitive touch which is a technology that I would love to incorporate in my final project.</p>
+
+        <h2>Files Mentioned in this Document</h2>
+        <a href="Photoresistor_Reader.ino" download><p>Photoresistor Reader (.INO)</p></a>
+        <a href="Capacitive_Touch.ino" download><p>Capacitive Touch (.INO)</p></a>
+        <a href="Photoresistor Case.stl" download><p>Photoresistor Case (.STL)</p></a>
+        <a href="Photoresistor Case.gcode" download><p>Photoresistor Case (.GCODE)</p></a>
+    </div>
+</body>
+</html>
