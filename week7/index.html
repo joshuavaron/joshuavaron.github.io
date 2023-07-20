@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+    <title>Lesson 7</title>
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
+</head>
+<body>
+    <div style="width:100%;"> 
+        <div style="float:left; width:80%;">
+            <h1>Lesson 7 - Electronic Output Devices</h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../about/index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">About</a></h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">Home</a></h1>
+            <br />
+        </div>
+        <hr width="100%;" 
+        color="black" 
+        size="2" 
+        align="middle">    
+    </div>
+
+    <div>
+        <h2>Introduction</h2>
+        <p>Today we were challenged to use an output device that we have never used before. By the end of the lesson we were supposed to be familiar with how to operate output devices as well as with the different kinds of output devices.</p>
+        <p>In today's lesson, we learned about closed-loop output devices. These output devices have sensors to ensure that their output is precise (such as a servo motor). I wanted to try building a closed-loop output device of my own, and settled on a closed loop heating pad.</p>
+        <h2>Components</h2>
+        <p>This project required just 1 component: the closed-loop heating pad.</p>
+        <h2>Part 1 - Closed-Loop Heating Pad</h2>
+        <p>For my heating pad I decided to include a thermistor such that the Arduino could turn the pad off an on at intervals to maintain a somewhat steady temperature. This will help me become more familiar with closed-loop technology, which I imagine will be critical for my final project. First, I found a heating pad and a 12 volt power supply to operate it with.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="heat.png" alt="Final sketch" style="width:350px;height:350px;">
+                <br />
+                Fig 1. Heating pad
+                <br />
+            </div>
+            <div style="float:right; width:50%; text-align: center;">
+                <img src="12v.png" alt="Technical layout" style="width:350px;height:350px;">
+                <br />
+                Fig 2. 12v power supply
+                <br />
+            </div>
+        </div>
+        <p>Next, I tried wiring the power supply and heating pad to a L9110 H Bridge, with no success. After trying to troublshoot this for a while, I asked Bobby and Ibrahim about the problem which led me to use the SRD-12VDC 1-channel relay instead. I started by connecting ground, 5v, and an output pin to the relay.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:33%; text-align: center;">
+                <img src="relay.png" alt="3D render of design" style="width:350px;height:350px;">
+                <br />
+                Fig 3. SRD-12VDC relay
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="a1.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 5. Arduino input connection
+                <br />
+            </div>
+            <div style="float:right; width:33%; text-align: center;">
+                <img src="ri.png" alt="Drawing Apparatus Design V1" style="width:350px;height:350px;">
+                <br />
+                Fig 4. Relay input wires
+                <br />
+            </div>    
+        </div>
+        <p>Next, I attatched the heating pad and 12v power supply to the relay.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="ro.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 6. Relay output wires
+                <br />
+            </div>
+            <div style="float:left; width:50%; text-align: center;">
+                <img src="wires.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 7. Wiring for the heating circuit
+                <br />
+            </div>
+        </div>
+        <p>I then created a simple thermistor circuit. For more details, see my previous documentation about photoresistors.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="circuit.png" alt="Final sketch" style="width:390px;height:350px;">
+                <br />
+                Fig 8. Thermistor circuit
+                <br />
+            </div>
+        </div>
+        <p>Finally, I connected my thermistor to my heating pad using sticky tape.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:right; width:100%; text-align: center;">
+                <img src="therm.png" alt="Technical layout" style="width:350px;height:350px;">
+                <br />
+                Fig 9. Connected thermistor
+                <br />
+            </div>
+        </div>
+        <p>I then began writing the code required to get data from the sensor and use it to heat my heating pad.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+            <iframe src=https://create.arduino.cc/editor/joshuavaron/8b229d65-aa4b-4e80-9ac9-33b18c8a7f72/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>As you can see, I created two classes; one class represented a thermistor and another represented the relay. I then instantiated an instance of each class and used the Read() functionality of the Thermistor class to get data to modulate the On() and Off() methods of the Relay class.</p>
+        <p>I began testing this and found that 4600-4700 was about room temperature, 4200-4300 was pleasantly warm, 3800-3900 was hot, and 3600- was unpleasantly hot. While I do not have specific temperatures for each of these bands, I am happy to say that my idea worked! Below is a graph of an 8 second interval of my heating pad running at 4250.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="graph.png" alt="Final sketch" style="width:600px;height:475px;">
+                <br />
+                Fig 10. Collected data
+                <br />
+            </div>
+        </div>
+        <p>As you can see, the data tends to be lower than my expected (red) value. I definitely think there is work to be done with regard to the algorithm used to modulate the temperature. Regardless, you can see the temperature stays fairly consistent.</p>
+        <h2>Part 2 - Oscilloscope Readings</h2>
+        <p>Unfortunately, neither my heating pad nor my relay have a duty cycle, which means I won't see any nice square waves. However, I still saw a lot of very interesting things when using the oscilloscope.</p>
+        <p>First, I looked at the datasheet for both pieces to see if there was anything I should look for. While I didn't find anything specific, there was a lot of information under the "Performance" section of the relay datasheet that can help explain some of the behaviors I see later.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="data.png" alt="Final sketch" style="width:600px;height:475px;">
+                <br />
+                Fig 11. Relay datasheet (Performance)
+                <br />
+            </div>
+        </div>
+        <p>I then attatched the oscilloscope to my project and paused it when there was a wave. These waves appeared directly after the relay switched from one state to another.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="o1.png" alt="Final sketch" style="width:600px;height:475px;">
+                <br />
+                Fig 12. Oscilloscope readings (single)
+                <br />
+            </div>
+        </div>
+        <p>As you can see, this wave looks a lot like a damped harmonic graph. Instead of a square wave, there appears to be a sine wave, although one with decreasing amplitude. There is also some strange noise coming before the wave.</p>
+        <p>This reading was positioned such that there were 5v intervals and 100ns between each time interval.</p>
+        <p>In a second reading, you can see the complete waveform of a single state switch. There is a small wave that resembles the damped harmonic wave from earlier, two strong spikes and falls, and then one large damped harmonic wave. The voltage interval is the same but the time interval is now 2 microseconds.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="o2.png" alt="Final sketch" style="width:600px;height:475px;">
+                <br />
+                Fig 13. Oscilloscope readings (full)
+                <br />
+            </div>
+        </div>
+        <p>This was extremely weird to me, but Ibrahim suggested that this reading might have something to do with the relay's protocol. The relay's datasheet mentions vibration, although I'm not sure if that is what is responsible for these waveforms.</p>
+        <h2>Concluding Remarks</h2>
+        <p>This project was significantly shorter than a lot of my other projects, but clearly built on a lot of the knowledge I gained from previous lessons. I had to use an input device, Arduino classes, basic circuitry, and output devices to solve this problem. I also had to graph the data I recieved which gave me great insight into how my project was working. I would definitely like the opportunity to use the oscilloscope with a more "ideal" candidate in the future in order to see the perfect square waves that I was anticipating.</p>
+
+        <h2>Files Mentioned in this Document</h2>
+        <a href="Heating_Pad.ino" download><p>Heating Pad (.INO)</p></a>
+    </div>
+</body>
+</html>
