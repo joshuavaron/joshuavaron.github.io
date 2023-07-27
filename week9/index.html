@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Fredericka the Great' rel='stylesheet'>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+    <title>Lesson 9</title>
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="../style.css">
+</head>
+<body>
+    <div style="width:100%;"> 
+        <div style="float:left; width:80%;">
+            <h1>Lesson 9 - Radio, WiFi, Bluetooth (IoT)</h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../about/index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">About</a></h1>
+            <br />
+        </div>
+        <div style="float:right; width:10%; text-align: right;">
+            <h1><a href="../index.html" style="color:darkgray; font-weight: normal; text-decoration: none;">Home</a></h1>
+            <br />
+        </div>
+        <hr width="100%;" 
+        color="black" 
+        size="2" 
+        align="middle">    
+    </div>
+
+    <div>
+        <h2>Introduction</h2>
+        <p>Today we were challenged to use the Internet of Things to control a microcontroller remotely. By the end of this lesson we should be familiar with Radio and WiFi communication with Arduino, as well as a fundamental understanding of various objects in the IoT.</p>
+        <p>I have always really enjoyed working with APIs. I am a massive proponent of the open-source movement, and free APIs are definitely a driving force for this movement. Besides working with an API, I also want to work toward the completion of my final project by sending Serial data between two Arduinos. To solve this, I decided on using radio communication.</p>
+        <h2>Components</h2>
+        <p>This project required 2 components: radio communication between two Arduinos, and Arduino communication with an API.</p>
+        <h2>Part 1 - Radio Communication</h2>
+        <p>For my final project, I began working on a way for my input and output devices to communicate. This will need to happen wirelessly, so I settled on using radio communication. My current output device takes a coordinate pair as a Serial input.</p>
+        <p>To begin sending this data over radio, I first found the mac addresses of my two boards using this code.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+        <iframe src=https://create.arduino.cc/editor/joshuavaron/171e2a6c-a0c7-40b0-8e2a-d08cfc358742/preview?embed style="height:410px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>Next, I examined this sample code that uses ESP-NOW.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+        <iframe src=https://create.arduino.cc/editor/joshuavaron/b426b2d6-c4be-4ccc-90f0-9cdbb0b12d73/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>Importantly, this code defines a datatype called "struct_message".</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+        <iframe src=https://create.arduino.cc/editor/joshuavaron/b426b2d6-c4be-4ccc-90f0-9cdbb0b12d73/preview?embed&snippet#L9-L14 style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>Because I need to send two doubles, I changed this defintion to the following.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+        <iframe src=https://create.arduino.cc/editor/joshuavaron/560e4011-a617-4599-aa86-f6c6b1e0d1a3/preview?embed&snippet style="height:100px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>I then added the mac address of my recieving Arduino. Additionally, I ensured that data would only be sent if there was something in the Serial. This gave me my final program.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+        <iframe src=https://create.arduino.cc/editor/joshuavaron/2443447a-a191-4d96-acca-f0c12414fc06/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>A key part of this program is that it parses all of the information that is inputted. I could have done this on the receiving end, but opted to do it here to more equally distribute computation.</p>
+        <p>Next, I took a look at the tutorial's sample code for receiving information.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+        <iframe src=https://create.arduino.cc/editor/joshuavaron/85eacec7-a9e5-4a12-9d0c-483b1b604e17/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>I then integrated the tutorial's reciever code into my existing code for my output device (the full output device's code will be included in the final project documentation).</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+        <iframe src=https://create.arduino.cc/editor/joshuavaron/a672bf3d-ea22-47ed-b2ad-5bddf3a0f88b/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>As you can see, I replaced the portion of the code that determines the coordinate to move to with the information that was sent from the Arduino (already parsed).</p>
+        <p>I then tested the radio communication out and it worked perfectly!</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <video width="1050" autoplay loop muted>
+                    <source src="IMG_4461.mov" type="video/mp4">
+                </video>
+                <br />
+                Fig 15. Final Arduino project
+                <br />
+            </div>
+        </div>
+        <h2>Part 2 - API Communication</h2>
+        <p>To begin, I took a look at a list of free APIs and settled on one called "Agify". As you can see, this is a simple API with a simple functionality: guessing one's age based on their name.</p>
+        <div style="width:100%; padding-bottom:120px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="agify.png" alt="Final sketch" style="height:100px;">
+                <br />
+                Fig 21. Collected data (dist:val | x:y)
+                <br />
+            </div>
+        </div>
+        <p>I started experimenting with the API and got some very interesting results.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="predict.png" alt="Final sketch" style="width:550px;">
+                <br />
+                Fig 21. Collected data (dist:val | x:y)
+                <br />
+            </div>
+        </div>
+        <div style="width:100%; padding-bottom:120px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="predicttest.png" alt="Final sketch" style="height:100px;">
+                <br />
+                Fig 21. Collected data (dist:val | x:y)
+                <br />
+            </div>
+        </div>
+        <p>I then read the APIs documentation and learned that I could use a country code to narrow down the results. I tried this as well.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="local.png" alt="Final sketch" style="width:550px;">
+                <br />
+                Fig 21. Collected data (dist:val | x:y)
+                <br />
+            </div>
+        </div>
+        <div style="width:100%; padding-bottom:120px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="localtest.png" alt="Final sketch" style="height:100px;">
+                <br />
+                Fig 21. Collected data (dist:val | x:y)
+                <br />
+            </div>
+        </div>
+        <p>I took a look at some example code for reading information from an API.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+            <iframe src=https://create.arduino.cc/editor/joshuavaron/662fcd33-1a68-464a-84f6-c8047be29474/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>Next, I switched out the endpoint for an endpoint from Agify.</p>
+        <h3>Code:</h3>
+        <div style="float:left; width:100%; text-align: center;">
+            <iframe src=https://create.arduino.cc/editor/joshuavaron/2547d5ff-d7ee-43e0-ba0d-9b5fd9b3ca6e/preview?embed&snippet style="height:55px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>I tested this program and got the correct results.</p>
+        <p>Now that I had a way to guess the age of a given name, I had to create a way for the GET request to change (if two different named people want to play). For this, I used more String methods. By starting with a root endpoint and concatinating it with a name query, I was able to get results for multiple names.</p>
+        <div style="float:left; width:100%; text-align: center;">
+            <iframe src=https://create.arduino.cc/editor/joshuavaron/b1678102-3f34-48cb-829f-3475835b7d07/preview?embed&snippet#L27-L29 style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>Now I have to sort through the JSON data I am getting in order to get the specific information I want. To do this, I used the ArduinoJson library.</p>
+        <div style="width:100%; padding-bottom: 370px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="json.png" alt="Final sketch" style="width:550px;">
+                <br />
+                Fig 21. Collected data (dist:val | x:y)
+                <br />
+            </div>
+        </div>
+        <p>Finally, I used the various pieces of information that I got to make a fun message display in the Serial. This is what the final code looked like.</p>
+        <div style="float:left; width:100%; text-align: center;">
+            <iframe src=https://create.arduino.cc/editor/joshuavaron/1f7e39a0-9898-40bf-a07d-1cec1fdafc18/preview?embed style="height:510px;width:700px;margin:10px 0" frameborder=0></iframe>
+        </div>
+        <p>And this is how it worked!</p>
+        <div style="width:100%; padding-bottom:120px;"> 
+            <div style="float:left; width:100%; text-align: center;">
+                <img src="final.png" alt="Final sketch" style="height:100px;">
+                <br />
+                Fig 21. Collected data (dist:val | x:y)
+                <br />
+            </div>
+        </div>
+        <h2>Concluding Remarks</h2>
+        <p>This project was extremely difficult to document as the majority of it was nonphysical. However, I really enjoyed showing my programming process as I move from something that I know to work to something experimental or new. This was an absolutely massive step toward the completion of my final project, and I am really happy with how I integrated radio communication into it.</p>
+
+        <h2>Files Mentioned in this Document</h2>
+        <a href="Get_Mac_Address.ino" download><p>Get Mac Address (.INO)</p></a>
+        <a href="Data_Send.ino" download><p>Send Data (.INO)</p></a>
+        <a href="Data_Receive.ino" download><p>Receive Data (.INO)</p></a>
+        <a href="API_Reader.ino" download><p>Read from API (.INO)</p></a>
+    </div>
+</body>
+</html>
